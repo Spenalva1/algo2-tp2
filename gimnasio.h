@@ -10,7 +10,7 @@
 
 typedef struct entrenador{
     char nombre[MAX_NOMBRE];
-    lista_t* pokemones; //cola
+    lista_t* pokemones; //lista
 }entrenador_t;
 
 typedef struct personaje{

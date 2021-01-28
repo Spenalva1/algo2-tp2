@@ -3,6 +3,9 @@
 #include "gimnasio.h"
 
 int main(){
-    gimnasio_t* gimnasio = crear_gimnasio("gimnasios/gimnasio1.txt");
+    personaje_t* personaje = crear_personaje_principal("personajes/personaje1.txt");
+    if(!personaje){
+        printf("mal\n");
+    }
     return 0;
 }
