@@ -2,6 +2,7 @@
 #define __BATALLAS_H__
 
 #define MAX_NOMBRE 50
+#define CANT_BATALLAS 5
 #define GANO_PRIMERO 1
 #define GANO_SEGUNDO -1
 

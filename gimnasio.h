@@ -30,11 +30,46 @@ typedef struct gimnasio{
 /*
 *
 */
-gimnasio_t* crear_gimnasio(char ruta[MAX_RUTA]);
+gimnasio_t* gimnasio_crear(char ruta[MAX_RUTA]);
 
 /*
 *
 */
-personaje_t* crear_personaje_principal(char ruta[MAX_RUTA]);
+void gimnasio_destruir(gimnasio_t* gimnasio);
+
+/*
+*
+*/
+personaje_t* personaje_principal_crear(char ruta[MAX_RUTA]);
+
+/*
+*
+*/
+void personaje_principal_destruir(personaje_t* personaje);
+
+/*
+*
+*/
+int enfrentamiento(personaje_t* personaje, entrenador_t* rival, funcion_batalla fn);
+
+/*
+*
+*/
+funcion_batalla* batallas_cargar();
+
+/*
+*
+*/
+void batallas_destruir(funcion_batalla* funcion_batalla);
+
+/*
+*
+*/
+int elegir_pokemon_rival(lista_t* obtenidos, lista_t* pokemones_rival);
+
+/*
+*
+*/
+void cambiar_pokemon(personaje_t* personaje);
 
 #endif /* __GIMNASIO_H__ */
