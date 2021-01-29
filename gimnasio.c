@@ -485,7 +485,6 @@ void cambiar_pokemon(personaje_t* personaje){
     }
     if(j == 0) return;
     while(j > lista_elementos(personaje->pokemon_obtenidos) || !cambio_valido(personaje->pokemon_para_combatir, lista_elemento_en_posicion(personaje->pokemon_obtenidos, j-1))){
-        printf("LLEGUE\n");
         if(j > lista_elementos(personaje->pokemon_obtenidos))
             printf("El número ingresado no es válido. Ingrese el número del pokemon que desee o \"0\" si desea salir: ");
         if(!cambio_valido(personaje->pokemon_para_combatir, (pokemon_t*)lista_elemento_en_posicion(personaje->pokemon_obtenidos, j-1)))
@@ -495,10 +494,6 @@ void cambiar_pokemon(personaje_t* personaje){
     if(j == 0) return;
     lista_borrar_de_posicion(personaje->pokemon_para_combatir, i-1);
     lista_insertar_en_posicion(personaje->pokemon_para_combatir, lista_elemento_en_posicion(personaje->pokemon_obtenidos, j-1), i-1);
-    
-    //prueba
-    i = 0;
-    lista_con_cada_elemento(personaje->pokemon_para_combatir, &mostrar_pokemon_con_id, &i);
 }
 
 
