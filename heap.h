@@ -47,6 +47,11 @@ void* heap_obtener_raiz(heap_t* heap);
 int heap_quitar_raiz(heap_t* heap);
 
 /*
+*
+*/
+size_t heap_elementos(heap_t* heap);
+
+/*
  * Determina si el heap está vacío.
  * Devuelve true si está vacío o el heap es NULL, false si el árbol tiene elementos.
  */

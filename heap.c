@@ -94,11 +94,20 @@ void* heap_obtener_raiz(heap_t* heap){
 
 int heap_quitar_raiz(heap_t* heap){
     if(!heap || heap->tope <= 0) return ERROR;
+    void* ultimo = heap->vector[heap->tope-1];
+    void* vector_aux = realloc(heap->vector, sizeof(void*) * (heap->tope - 1));
+    if(!vector_aux) return ERROR;
     if(heap->destructor) free(heap->vector[0]);
-    heap->vector[0] = heap->vector[heap->tope-1];
+    heap->vector = vector_aux;
+    heap->vector[0] = ultimo;
     heap->tope--;
     if(heap->tope > 1) shift_down(heap, 0);
     return OK;
+}
+
+size_t heap_elementos(heap_t* heap){
+    if(!heap) return 0;
+    return heap->tope;
 }
 
 int heap_vacio(heap_t* heap){

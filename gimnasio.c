@@ -495,8 +495,3 @@ void cambiar_pokemon(personaje_t* personaje){
     lista_borrar_de_posicion(personaje->pokemon_para_combatir, i-1);
     lista_insertar_en_posicion(personaje->pokemon_para_combatir, lista_elemento_en_posicion(personaje->pokemon_obtenidos, j-1), i-1);
 }
-
-
-
-
-
