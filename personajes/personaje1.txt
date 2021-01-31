@@ -4,7 +4,7 @@ P;Butterfree;50;40;50
 P;Pidgeotto;65;40;30
 P;Bulbasaur;20;40;30
 P;Charmander;40;30;20
-P;Squirtle;1000;1000;1000
+P;Squirtle;100;100;10
 P;Krabby;20;30;20
 P;Raticate;30;50;20
 P;Haunter;40;60;20

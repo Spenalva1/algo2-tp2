@@ -50,7 +50,10 @@ bool pokemon_valido(pokemon_t pokemon){
 
 gimnasio_t* gimnasio_crear(char ruta[MAX_RUTA]){
     FILE* archivo = fopen(ruta, "r");
-    if(!archivo) return NULL;
+    if(!archivo) {
+        printf("No se pudo abrir el archivo de la ruta indicada.\n");
+        return NULL;
+    }
     char letra = (char)fgetc(archivo);
     if(letra != GIMNASIO){
         fclose(archivo);
@@ -227,9 +230,6 @@ void pokemon_destruir(pokemon_t* pokemon){
     if(pokemon) free(pokemon);
 }
 
-/*
-*
-*/
 void entrenador_destruir(entrenador_t* entrenador){
     if(!entrenador) return;
     while(!lista_vacia(entrenador->pokemones)){
@@ -260,7 +260,10 @@ void gimnasio_destruir(gimnasio_t* gimnasio) {
 
 personaje_t* personaje_principal_crear(char ruta[MAX_RUTA]){
     FILE* archivo = fopen(ruta, "r");
-    if(!archivo) return NULL;
+    if(!archivo){
+        printf("No se pudo abrir el archivo de la ruta indicada.\n");
+        return NULL;
+    }
     bool hay_error = false;
     pokemon_t* pokemon_ptr = NULL;
     personaje_t* personaje_ptr = NULL;
@@ -379,32 +382,6 @@ void mejorar_pokemon(pokemon_t* pokemon){
     if(pokemon->defensa < MAX_HABILIDAD) pokemon->defensa++;
 }
 
-int enfrentamiento(personaje_t* personaje, entrenador_t* rival, funcion_batalla fn) {
-    lista_iterador_t* it1 = lista_iterador_crear(personaje->pokemon_para_combatir);
-    lista_iterador_t* it2 = lista_iterador_crear(rival->pokemones);
-    int resultado;
-    while(lista_iterador_tiene_siguiente(it1) && lista_iterador_tiene_siguiente(it2)){
-        if(fn(lista_iterador_elemento_actual(it1), lista_iterador_elemento_actual(it2)) == GANO_PRIMERO){
-            printf("Tu " VERDE "%s " RESET "ha derrotado a " ROJO "%s" RESET ".\n", ((pokemon_t*)lista_iterador_elemento_actual(it1))->nombre, ((pokemon_t*)lista_iterador_elemento_actual(it2))->nombre);
-            mejorar_pokemon(lista_iterador_elemento_actual(it1));
-            lista_iterador_avanzar(it2);
-        }else{
-            printf(ROJO"%s " RESET "ha derrotado a tu " VERDE "%s" RESET ".\n", ((pokemon_t*)lista_iterador_elemento_actual(it2))->nombre, ((pokemon_t*)lista_iterador_elemento_actual(it1))->nombre);
-            lista_iterador_avanzar(it1);
-        }
-    }
-    if(lista_iterador_tiene_siguiente(it1)) {
-        printf(VERDE"¡Has ganado la batalla contra %s!\n"RESET, rival->nombre);
-        resultado = GANO_PRIMERO;
-    }else{
-        printf(ROJO"¡Has perdido la batalla contra %s!\n"RESET, rival->nombre);
-        resultado = GANO_SEGUNDO;
-    }
-    lista_iterador_destruir(it1);
-    lista_iterador_destruir(it2);
-    return resultado;
-}
-
 funcion_batalla* batallas_cargar(){
     funcion_batalla* fn = calloc(CANT_BATALLAS, sizeof(funcion_batalla));
     if(!fn) return NULL;
@@ -494,4 +471,24 @@ void cambiar_pokemon(personaje_t* personaje){
     if(j == 0) return;
     lista_borrar_de_posicion(personaje->pokemon_para_combatir, i-1);
     lista_insertar_en_posicion(personaje->pokemon_para_combatir, lista_elemento_en_posicion(personaje->pokemon_obtenidos, j-1), i-1);
+    cambiar_pokemon(personaje);
+}
+
+void gimnasio_mostrar(gimnasio_t* gimnasio){
+    printf("Nombre del gimnasio: %s\n", gimnasio->nombre);
+    printf("Dificultad: %i\n", gimnasio->dificultad);
+    printf("ID Batalla: %i\n", gimnasio->id_puntero_funcion);
+    printf("Lider: %s\n", gimnasio->lider->nombre);
+    if(!lista_vacia(gimnasio->entrenadores)){
+        entrenador_t* prox_entrenador = lista_ultimo(gimnasio->entrenadores);
+        printf("Proximo entrenador: %s\n", prox_entrenador->nombre);
+    }
+}
+
+void personaje_principal_mostrar(personaje_t* personaje){
+    printf("Nombre: %s\n", personaje->nombre);
+    printf("Pokemones de batalla:\n");
+    lista_con_cada_elemento(personaje->pokemon_para_combatir, &mostrar_pokemon, NULL);
+    printf("Pokemones obtenidos:\n");
+    lista_con_cada_elemento(personaje->pokemon_obtenidos, &mostrar_pokemon, NULL);
 }

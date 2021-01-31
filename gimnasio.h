@@ -45,12 +45,12 @@ personaje_t* personaje_principal_crear(char ruta[MAX_RUTA]);
 /*
 *
 */
-void personaje_principal_destruir(personaje_t* personaje);
+void personaje_principal_mostrar(personaje_t* personaje);
 
 /*
 *
 */
-int enfrentamiento(personaje_t* personaje, entrenador_t* rival, funcion_batalla fn);
+void personaje_principal_destruir(personaje_t* personaje);
 
 /*
 *
@@ -71,5 +71,20 @@ int elegir_pokemon_rival(lista_t* obtenidos, lista_t* pokemones_rival);
 *
 */
 void cambiar_pokemon(personaje_t* personaje);
+
+/*
+*
+*/
+void entrenador_destruir(entrenador_t* entrenador);
+
+/*
+*
+*/
+void mejorar_pokemon(pokemon_t* pokemon);
+
+/*
+*
+*/
+void gimnasio_mostrar(gimnasio_t* gimnasio);
 
 #endif /* __GIMNASIO_H__ */
