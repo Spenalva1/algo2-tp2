@@ -27,10 +27,12 @@ typedef struct gimnasio{
     lista_t* entrenadores; //pila
 }gimnasio_t;
 
-/*
-*
-*/
-gimnasio_t* gimnasio_crear(char ruta[MAX_RUTA]);
+typedef struct juego{
+    funcion_batalla* tipos_de_batallas;
+    personaje_t* personaje_principal;
+    heap_t* gimnasios;
+    bool simular;
+}juego_t;
 
 /*
 *
@@ -40,27 +42,12 @@ void gimnasio_destruir(gimnasio_t* gimnasio);
 /*
 *
 */
-personaje_t* personaje_principal_crear(char ruta[MAX_RUTA]);
-
-/*
-*
-*/
 void personaje_principal_mostrar(personaje_t* personaje);
 
 /*
 *
 */
-void personaje_principal_destruir(personaje_t* personaje);
-
-/*
-*
-*/
 funcion_batalla* batallas_cargar();
-
-/*
-*
-*/
-void batallas_destruir(funcion_batalla* funcion_batalla);
 
 /*
 *
@@ -86,5 +73,30 @@ void mejorar_pokemon(pokemon_t* pokemon);
 *
 */
 void gimnasio_mostrar(gimnasio_t* gimnasio);
+
+/*
+*
+*/
+int agregar_gimnasio(heap_t* gimnasios);
+
+/*
+*
+*/
+int agregar_personaje(juego_t* juego);
+
+/*
+*
+*/
+void maestro_pokemon(juego_t* juego);
+
+/*
+*
+*/
+void mostrar_combate_informacion(pokemon_t* p1, pokemon_t* p2);
+
+/*
+*
+*/
+void terminar_juego(juego_t* juego);
 
 #endif /* __GIMNASIO_H__ */

@@ -9,4 +9,4 @@ P;Krabby;20;30;20
 P;Raticate;30;50;20
 P;Haunter;40;60;20
 P;Primeape;50;60;30
-P;Muk;20;40;60
+P;Muk;2000;4000;6000

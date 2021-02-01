@@ -1,4 +1,5 @@
 #include "heap.h"
+#include <stdio.h> // BORRAR
 
 /*
 *
@@ -47,7 +48,7 @@ void shift_up(heap_t* heap, size_t posicion){
 *
 */
 void shift_down(heap_t* heap, size_t posicion){
-    if(!heap) return;
+    if(!heap || heap_elementos(heap) < 2) return;
     size_t pos_izq = posicion_hijo_izquierdo(posicion);
     size_t pos_der = posicion_hijo_derecho(posicion);
     size_t pos_hijo_a_comparar = pos_izq;
@@ -78,7 +79,12 @@ heap_t* heap_crear(heap_comparador comparador, heap_liberar_elemento destructor)
 int heap_insertar_elemento(heap_t* heap, void* elemento){
     if(!heap) return ERROR;
     if(!heap->comparador) return ERROR;
-    void* vector_aux = realloc(heap->vector, sizeof(void*) * (heap->tope + 1));
+    void* vector_aux;
+    if(heap_elementos(heap) == 0){
+        vector_aux = malloc(sizeof(void*));
+    }else{
+        vector_aux = realloc(heap->vector, sizeof(void*) * (heap->tope + 1));
+    }
     if(!vector_aux) return ERROR;
     heap->tope++;
     heap->vector = vector_aux;
@@ -94,14 +100,21 @@ void* heap_obtener_raiz(heap_t* heap){
 
 int heap_quitar_raiz(heap_t* heap){
     if(!heap || heap->tope <= 0) return ERROR;
-    void* ultimo = heap->vector[heap->tope-1];
-    void* vector_aux = realloc(heap->vector, sizeof(void*) * (heap->tope - 1));
-    if(!vector_aux) return ERROR;
-    if(heap->destructor) free(heap->vector[0]);
-    heap->vector = vector_aux;
-    heap->vector[0] = ultimo;
-    heap->tope--;
-    if(heap->tope > 1) shift_down(heap, 0);
+    if(heap_elementos(heap) == 1){
+        if(heap->destructor) heap->destructor((heap->vector[0]));
+        free(heap->vector);
+        heap->vector = NULL;
+        heap->tope = 0;
+    }else{
+        void* ultimo = heap->vector[heap->tope-1];
+        void* vector_aux = realloc(heap->vector, sizeof(void*) * (heap->tope - 1));
+        if(!vector_aux) return ERROR;
+        heap->vector = vector_aux;
+        if(heap->destructor) heap->destructor((heap->vector[0]));
+        heap->vector[0] = ultimo;
+        heap->tope--;
+        if(heap->tope > 1) shift_down(heap, 0);
+    }
     return OK;
 }
 
@@ -121,6 +134,5 @@ void heap_destruir(heap_t* heap) {
             heap_quitar_raiz(heap);
         }        
     }
-    if(heap->vector) free(heap->vector);
     free(heap);
 }

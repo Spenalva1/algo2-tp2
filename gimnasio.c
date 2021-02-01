@@ -2,8 +2,6 @@
 #include <string.h>
 #include "gimnasio.h"
 
-// CREAR DESTRUCTORES
-
 #define GIMNASIO 'G'
 #define FORMATO_GIMNASIO ";%49[^;];%i;%i\n"
 #define FORMATO_ENTRENADOR ";%49[^\n]\n"
@@ -12,13 +10,11 @@
 #define POKEMON 'P'
 #define ENTRENADOR 'E'
 #define MAX_HABILIDAD 63
-#define MIN_HABILIDAD 0
 #define MAX_POKEMONES_COMBATE 6
 #define ROJO "\033[0;31m"
 #define VERDE "\033[0;32m"
 #define RESET "\033[0m"
 
-//PRUEBA
 bool mostrar_pokemon(void* pokemon, void* contador){
     if(pokemon){
         printf(VERDE "       %s" RESET "\r\t\t\tVelocidad -> %i   Ataque -> %i   Defensa -> %i\n", ((pokemon_t*)pokemon)->nombre, ((pokemon_t*)pokemon)->velocidad, ((pokemon_t*)pokemon)->ataque, ((pokemon_t*)pokemon)->defensa);
@@ -48,6 +44,9 @@ bool pokemon_valido(pokemon_t pokemon){
     return pokemon.ataque >= 0 && pokemon.defensa >= 0 && pokemon.velocidad >= 0;
 }
 
+/*
+*
+*/
 gimnasio_t* gimnasio_crear(char ruta[MAX_RUTA]){
     FILE* archivo = fopen(ruta, "r");
     if(!archivo) {
@@ -258,6 +257,9 @@ void gimnasio_destruir(gimnasio_t* gimnasio) {
     free(gimnasio);
 }
 
+/*
+*
+*/
 personaje_t* personaje_principal_crear(char ruta[MAX_RUTA]){
     FILE* archivo = fopen(ruta, "r");
     if(!archivo){
@@ -355,16 +357,13 @@ personaje_t* personaje_principal_crear(char ruta[MAX_RUTA]){
     }
     lista_iterador_destruir(it);
 
-    //PRUEBA
-    // printf("OBTENIDOS:\n");
-    // lista_con_cada_elemento(personaje_ptr->pokemon_obtenidos, &mostrar_pokemon, NULL);
-    // printf("COMBATE:\n");
-    // lista_con_cada_elemento(personaje_ptr->pokemon_para_combatir, &mostrar_pokemon, NULL);
-
     fclose(archivo);
     return personaje_ptr;
 }
 
+/*
+*
+*/
 void personaje_principal_destruir(personaje_t* personaje){
     if(!personaje) return;
     while(!lista_vacia(personaje->pokemon_obtenidos)){
@@ -391,10 +390,6 @@ funcion_batalla* batallas_cargar(){
     fn[3] = &funcion_batalla_4;
     fn[4] = &funcion_batalla_5;
     return fn;
-}
-
-void batallas_destruir(funcion_batalla* funcion_batalla){
-    if(funcion_batalla) free(funcion_batalla);
 }
 
 int elegir_pokemon_rival(lista_t* obtenidos, lista_t* pokemones_rival){
@@ -436,6 +431,49 @@ bool cambio_valido(lista_t* pokemones, pokemon_t* pokemon){
     }
     lista_iterador_destruir(it);
     return cambio_valido;
+}
+
+int agregar_gimnasio(heap_t* gimnasios){
+    printf("Ingrese la ruta del archivo del gimnasio que desea agregar: ");
+    char ruta[MAX_RUTA];
+    scanf("%s", ruta);
+    gimnasio_t* gimnasio = gimnasio_crear(ruta);
+    int resultado;
+    if(gimnasio && (resultado = heap_insertar_elemento(gimnasios, gimnasio) == OK)) return OK;
+    printf("Error al cargar gimnasio, intente devuelta.\n");
+    return ERROR;
+}
+
+int agregar_personaje(juego_t* juego){
+    printf("Ingrese la ruta del archivo del personaje que desea cargar: ");
+    char ruta[MAX_RUTA];
+    scanf("%s", ruta);
+    personaje_t* personaje = personaje_principal_crear(ruta);
+    if(personaje){
+        juego->personaje_principal = personaje;
+        return OK;
+    }
+    printf("Error al cargar gimnasio, intente devuelta.\n");
+    return ERROR;
+}
+
+void maestro_pokemon(juego_t* juego){
+    printf("¡enhorabuena %s!\n", juego->personaje_principal->nombre);
+    printf("¡Has obtenido las medallas de todos los gimnasios!\n");
+    printf("¡Te has convertido en un maestro pokemon!\n");
+    terminar_juego(juego);
+}
+
+void terminar_juego(juego_t* juego){ //VOY POR ACA
+    personaje_principal_destruir(juego->personaje_principal);
+    heap_destruir(juego->gimnasios);
+    if(juego->tipos_de_batallas) free(juego->tipos_de_batallas);
+}
+
+void mostrar_combate_informacion(pokemon_t* p1, pokemon_t* p2){
+    printf(VERDE "\t%s" RESET "\tVelocidad -> %i   Ataque -> %i   Defensa -> %i\n", p1->nombre, p1->velocidad, p1->ataque, p1->defensa);
+    printf("VS.\n");
+    printf(ROJO "\t%s" RESET "\tVelocidad -> %i   Ataque -> %i   Defensa -> %i\n", p2->nombre, p2->velocidad, p2->ataque, p2->defensa);
 }
 
 void cambiar_pokemon(personaje_t* personaje){
