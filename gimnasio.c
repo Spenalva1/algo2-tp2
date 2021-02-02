@@ -31,21 +31,7 @@ bool mostrar_pokemon_con_id(void* pokemon, void* contador){
 }
 
 /*
-*
-*/
-bool letra_gimnasio_valida(char letra){
-    return letra == LIDER || letra == POKEMON || letra == ENTRENADOR;
-}
-
-/*
-*
-*/
-bool pokemon_valido(pokemon_t pokemon){
-    return pokemon.ataque >= 0 && pokemon.defensa >= 0 && pokemon.velocidad >= 0;
-}
-
-/*
-*
+*   Lee el gimnasio de la ruta recibida, esperando como minimo la informacion del gimnasio, un lider, y al menos un pokemon por lider/entrenador
 */
 gimnasio_t* gimnasio_crear(char ruta[MAX_RUTA]){
     FILE* archivo = fopen(ruta, "r");
@@ -86,7 +72,7 @@ gimnasio_t* gimnasio_crear(char ruta[MAX_RUTA]){
 
     pokemon_t pokemon;
     leidos = fscanf(archivo, FORMATO_POKEMON, pokemon.nombre, &(pokemon.velocidad), &(pokemon.ataque), &(pokemon.defensa));
-    if(leidos != 4 || !pokemon_valido(pokemon)){
+    if(leidos != 4){
         fclose(archivo);
         return NULL;
     }
@@ -132,7 +118,7 @@ gimnasio_t* gimnasio_crear(char ruta[MAX_RUTA]){
     while(letra == POKEMON && !hay_error){
         leidos = fscanf(archivo, FORMATO_POKEMON, pokemon.nombre, &(pokemon.velocidad), &(pokemon.ataque), &(pokemon.defensa));
 
-        if(leidos != 4 || !pokemon_valido(pokemon)){
+        if(leidos != 4){
             hay_error = true;
         } else {
             pokemon_ptr = malloc(sizeof(pokemon_t));
@@ -165,7 +151,7 @@ gimnasio_t* gimnasio_crear(char ruta[MAX_RUTA]){
             hay_error = true;
         } else {
             leidos = fscanf(archivo, FORMATO_POKEMON, pokemon.nombre, &(pokemon.velocidad), &(pokemon.ataque), &(pokemon.defensa));
-            if(leidos != 4 || !pokemon_valido(pokemon)){
+            if(leidos != 4){
                 hay_error = true;
             } else {
                 pokemon_ptr = malloc(sizeof(pokemon_t));
@@ -194,7 +180,7 @@ gimnasio_t* gimnasio_crear(char ruta[MAX_RUTA]){
         while(letra == POKEMON && !hay_error){
             leidos = fscanf(archivo, FORMATO_POKEMON, pokemon.nombre, &(pokemon.velocidad), &(pokemon.ataque), &(pokemon.defensa));
 
-            if(leidos != 4 || !pokemon_valido(pokemon)){
+            if(leidos != 4){
                 hay_error = true;
             } else {
                 pokemon_ptr = malloc(sizeof(pokemon_t));
@@ -223,7 +209,7 @@ gimnasio_t* gimnasio_crear(char ruta[MAX_RUTA]){
 }
 
 /*
-*
+*   libera la memoria ocupada por el pokemon recibido
 */
 void pokemon_destruir(pokemon_t* pokemon){
     if(pokemon) free(pokemon);
@@ -240,7 +226,7 @@ void entrenador_destruir(entrenador_t* entrenador){
 }
 
 /*
-*
+*   libera la lista de entrenadores recibida
 */
 void entrenadores_destruir(lista_t* entrenadores){
     while(!lista_vacia(entrenadores)){
@@ -258,7 +244,7 @@ void gimnasio_destruir(gimnasio_t* gimnasio) {
 }
 
 /*
-*
+*   Lee el personaje de la ruta recibida, esperando como minimo la informacion del personaje y al menos 1 pokemon válido
 */
 personaje_t* personaje_principal_crear(char ruta[MAX_RUTA]){
     FILE* archivo = fopen(ruta, "r");
@@ -291,7 +277,7 @@ personaje_t* personaje_principal_crear(char ruta[MAX_RUTA]){
         hay_error = true;
     } else {
         leidos = fscanf(archivo, FORMATO_POKEMON, pokemon.nombre, &(pokemon.velocidad), &(pokemon.ataque), &(pokemon.defensa));
-        if(leidos != 4 || !pokemon_valido(pokemon)){
+        if(leidos != 4){
             hay_error = true;
         } else {
             pokemon_ptr = malloc(sizeof(pokemon_t));
@@ -334,7 +320,7 @@ personaje_t* personaje_principal_crear(char ruta[MAX_RUTA]){
     while(letra == POKEMON && !hay_error){
         leidos = fscanf(archivo, FORMATO_POKEMON, pokemon.nombre, &(pokemon.velocidad), &(pokemon.ataque), &(pokemon.defensa));
 
-        if(leidos != 4 || !pokemon_valido(pokemon)){
+        if(leidos != 4){
             hay_error = true;
         } else {
             pokemon_ptr = malloc(sizeof(pokemon_t));
@@ -362,7 +348,7 @@ personaje_t* personaje_principal_crear(char ruta[MAX_RUTA]){
 }
 
 /*
-*
+*   libera la memoria ocupada por el personaje recibido
 */
 void personaje_principal_destruir(personaje_t* personaje){
     if(!personaje) return;
@@ -376,20 +362,31 @@ void personaje_principal_destruir(personaje_t* personaje){
 }
 
 void mejorar_pokemon(pokemon_t* pokemon){
-    if(pokemon->ataque < MAX_HABILIDAD) pokemon->ataque++;
-    if(pokemon->velocidad < MAX_HABILIDAD) pokemon->velocidad++;
-    if(pokemon->defensa < MAX_HABILIDAD) pokemon->defensa++;
+    bool mejora = false;
+    if(pokemon->ataque < MAX_HABILIDAD){
+        pokemon->ataque++;
+        mejora = true;
+    }
+    if(pokemon->velocidad < MAX_HABILIDAD){
+        pokemon->velocidad++;
+        mejora = true;
+    }
+    if(pokemon->defensa < MAX_HABILIDAD){
+        pokemon->defensa++;
+        mejora = true;
+    }
+    if(mejora)
+        printf("Las habilidades de %s han sido mejoradas.\n", pokemon->nombre);
+    else
+        printf("Las habilidades de %s ya no pueden ser mejoradas.\n", pokemon->nombre);
 }
 
-funcion_batalla* batallas_cargar(){
-    funcion_batalla* fn = calloc(CANT_BATALLAS, sizeof(funcion_batalla));
-    if(!fn) return NULL;
-    fn[0] = &funcion_batalla_1;
-    fn[1] = &funcion_batalla_2;
-    fn[2] = &funcion_batalla_3;
-    fn[3] = &funcion_batalla_4;
-    fn[4] = &funcion_batalla_5;
-    return fn;
+void batallas_cargar(funcion_batalla* batallas){
+    batallas[0] = &funcion_batalla_1;
+    batallas[1] = &funcion_batalla_2;
+    batallas[2] = &funcion_batalla_3;
+    batallas[3] = &funcion_batalla_4;
+    batallas[4] = &funcion_batalla_5;
 }
 
 int elegir_pokemon_rival(lista_t* obtenidos, lista_t* pokemones_rival){
@@ -402,14 +399,6 @@ int elegir_pokemon_rival(lista_t* obtenidos, lista_t* pokemones_rival){
         printf("El número ingresado no es válido, ingrese el número del pokemon deseado o \"0\" si no desea ninguno: ");
         scanf("%lu", &i);
     }
-
-    lista_con_cada_elemento(pokemones_rival, &mostrar_pokemon_con_id, &i);
-    printf("Ingrese el número del pokemon deseado o \"0\" si no desea ninguno: ");
-    scanf("%lu", &i);
-    while(i > lista_elementos(pokemones_rival)){
-        printf("El número ingresado no es válido. Ingrese el número del pokemon deseado o \"0\" si no desea ninguno: ");
-        scanf("%lu", &i);
-    }
     if(i == 0) return OK;
     pokemon_t* pokemon = malloc(sizeof(pokemon_t));
     if(!pokemon) return ERROR;
@@ -420,7 +409,7 @@ int elegir_pokemon_rival(lista_t* obtenidos, lista_t* pokemones_rival){
 }
 
 /*
-*
+*   devuelve true su el pokemon recivido se encuentra en la lista de pokemones. Devuelve false en caso contrario
 */
 bool cambio_valido(lista_t* pokemones, pokemon_t* pokemon){
     lista_iterador_t* it = lista_iterador_crear(pokemones);
@@ -457,17 +446,9 @@ int agregar_personaje(juego_t* juego){
     return ERROR;
 }
 
-void maestro_pokemon(juego_t* juego){
-    printf("¡enhorabuena %s!\n", juego->personaje_principal->nombre);
-    printf("¡Has obtenido las medallas de todos los gimnasios!\n");
-    printf("¡Te has convertido en un maestro pokemon!\n");
-    terminar_juego(juego);
-}
-
-void terminar_juego(juego_t* juego){ //VOY POR ACA
+void terminar_juego(juego_t* juego){
     personaje_principal_destruir(juego->personaje_principal);
     heap_destruir(juego->gimnasios);
-    if(juego->tipos_de_batallas) free(juego->tipos_de_batallas);
 }
 
 void mostrar_combate_informacion(pokemon_t* p1, pokemon_t* p2){

@@ -46,34 +46,39 @@ void destructor(void* g){
 }
 
 /*
-*
+*   imprime el menu de victoria de gimnasio, permitiendo al elegir qué hacer
 */
 void menu_victoria(juego_t* juego);
 
 /*
-*
+*   imprime el menu inicial del juego, permitiendo al elegir qué hacer
 */
 void menu_inicio(juego_t* juego);
 
 /*
-*
+*   imprime el menu inicial de un gimnasio, permitiendo al elegir qué hacer
 */
 void menu_gimnasio(juego_t* juego);
 
 /*
-*
+*   imprime el menu de derrota de batalla, permitiendo al elegir qué hacer
 */
 void menu_derrota(juego_t* juego);
 
 /*
-*
+*   imprime en pantalla el desarrollo del combate correspondiente
 */
 void batallar(juego_t* juego);
 
 /*
-*
+*   imprime el menu final de derrota del juego para luego liberar toda la memoria reservada por el juego
 */
 void derrota(juego_t* juego);
+
+/*
+*   Muestra el mensaje de victoria del juego para luego liberar toda la memoria reservada por el juego
+*/
+void maestro_pokemon(juego_t* juego);
 
 int main(){
     juego_t juego;
@@ -83,11 +88,7 @@ int main(){
     if(!juego.gimnasios){
         printf("Error al inicializar el juego, intente devuelta");
     }
-    juego.tipos_de_batallas = batallas_cargar();
-    if(!juego.tipos_de_batallas){
-        heap_destruir(juego.gimnasios);
-        printf("Error al inicializar el juego, intente devuelta");
-    }
+    batallas_cargar(juego.tipos_de_batallas);
     menu_inicio(&juego);
     return 0;
 }
@@ -187,14 +188,14 @@ void menu_derrota(juego_t* juego){
 }
 
 void menu_gimnasio(juego_t* juego){
-    if(juego->simular){
-        batallar(juego);
-        return;
-    }
     char letra_ingresada;
     gimnasio_t* gimnasio = heap_obtener_raiz(juego->gimnasios);
     bool lider_habilitado = lista_vacia(gimnasio->entrenadores);
     printf("Bienvenido al gimnasio " VERDE "\"%s\"" RESET " Seleccione una de las siguientes opciones:\n", gimnasio->nombre);
+    if(juego->simular){
+        batallar(juego);
+        return;
+    }
     printf("E -> Mostrar entrenador principal\n");
     printf("G -> Mostrar informacion del gimnasio actual\n");
     printf("C -> Cambiar pokemones de batalla\n");
@@ -334,4 +335,11 @@ void batallar(juego_t* juego){
         return;
     }
     menu_derrota(juego);
+}
+
+void maestro_pokemon(juego_t* juego){
+    printf("¡Enhorabuena %s!\n", juego->personaje_principal->nombre);
+    printf("¡Has obtenido las medallas de todos los gimnasios!\n");
+    printf("¡Te has convertido en un maestro pokemon!\n");
+    terminar_juego(juego);
 }

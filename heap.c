@@ -2,7 +2,7 @@
 #include <stdio.h> // BORRAR
 
 /*
-*
+*   intercambia dos posiciones del vector recibido
 */
 void swap(void** vector, size_t posicion_1, size_t posicion_2){
     void* aux = vector[posicion_1];
@@ -11,28 +11,28 @@ void swap(void** vector, size_t posicion_1, size_t posicion_2){
 }
 
 /*
-*
+*   retorna la posicion correspondiente al padre de la posicion recibida
 */
 size_t posicion_padre(size_t posicion){
     return (posicion-1)/2;
 }
 
 /*
-*
+*   retorna la posicion correspondiente al hijo izquierdo de la posicion recibida
 */
 size_t posicion_hijo_izquierdo(size_t posicion){
     return posicion*2+1;
 }
 
 /*
-*
+*   retorna la posicion correspondiente al hijo derecho de la posicion recibida
 */
 size_t posicion_hijo_derecho(size_t posicion){
     return posicion*2+2;
 }
 
 /*
-*
+*   mueve el elemeno de la posicion recibida a su lugar correspondiente de acuerdo al comparador del heap
 */
 void shift_up(heap_t* heap, size_t posicion){
     if(!heap || posicion >= heap->tope || posicion <= 0) return;
@@ -45,8 +45,8 @@ void shift_up(heap_t* heap, size_t posicion){
 }
 
 /*
-*
-*/
+*   mueve el elemeno de la posicion recibida a su lugar correspondiente de acuerdo al comparador del heap
+*/ 
 void shift_down(heap_t* heap, size_t posicion){
     if(!heap || heap_elementos(heap) < 2) return;
     size_t pos_izq = posicion_hijo_izquierdo(posicion);
