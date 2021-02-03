@@ -1,0 +1,5 @@
+E;Timo
+P;Sealeo;45;60;42
+P;Walrein;40;20;46
+P;Clamperl;32;51;37
+P;Huntail;52;40;59

@@ -1,0 +1,10 @@
+E;Santi
+P;Pidgeot;61;60;55
+P;PidgeotMega Pidgeot;61;60;60
+P;Rattata;52;56;35
+P;Raticate;57;61;60
+P;Spearow;50;60;30
+P;Fearow;60;50;45
+P;Ekans;55;60;44
+P;Arbok;60;45;49
+P;Pikachu;50;55;40

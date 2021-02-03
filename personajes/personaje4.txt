@@ -1,0 +1,9 @@
+E;Dios
+P;Tepig;45;63;45
+P;Pignite;55;38;55
+P;Emboar;13;53;41
+P;Oshawott;45;55;45
+P;Dewott;60;63;60
+P;Samurott;16;56;57
+P;Patrat;42;55;39
+P;Watchog;52;61;9

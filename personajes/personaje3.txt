@@ -1,0 +1,5 @@
+E;Messi
+P;Archen;21;56;45
+P;Archeops;62;29;39
+P;Trubbish;51;50;62
+P;Garbodor;33;61;61

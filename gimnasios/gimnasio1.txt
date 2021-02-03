@@ -5,6 +5,6 @@ P;Starmie;10;10;10
 E;Dominguera Diana
 P;Goldeen;40;50;30
 E;Nadador Luis
-P;Shellder;300;200;400
+P;Shellder;30;20;40
 P;Horsea;45;30;20
 P;Pikachu;15;20;35

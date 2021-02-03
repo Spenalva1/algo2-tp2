@@ -1,0 +1,5 @@
+E;Goku
+P;Lopunny;63;58;62
+P;LopunnyMega Lopunny;48;34;58
+P;Mismagius;53;60;60
+P;Honchkrow;58;23;52

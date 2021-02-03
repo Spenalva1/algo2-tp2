@@ -1,0 +1,5 @@
+E;Ibai
+P;Seviper;60;55;60
+P;Lunatone;61;55;13
+P;Solrock;48;45;57
+P;Barboach;60;48;43
