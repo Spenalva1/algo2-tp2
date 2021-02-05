@@ -247,6 +247,12 @@ void menu_inicio(juego_t* juego){
         printf("I -> Comenzar partida\n");
         printf("S -> Simular partida\n");
     }
+    if(!(juego->personaje_principal) && heap_elementos(juego->gimnasios) == 0)
+        printf("Para iniciar la partida es necesario cargar un personaje y al menos un gimnasio.\n");
+    else if(!(juego->personaje_principal))
+        printf("Para iniciar la partida falta cargar un personaje.\n");
+    else if(heap_elementos(juego->gimnasios) == 0)
+        printf("Para iniciar la partida falta cargar al menos un gimnasio.\n");
     printf("Ingrese uno de los caracteres indicados: ");
     scanf(" %c", &letra_ingresada);
     bool menu_terminado = false;
@@ -282,6 +288,12 @@ void menu_inicio(juego_t* juego){
                 printf("I -> Comenzar partida\n");
                 printf("S -> Simular partida\n");
             }
+            if(!(juego->personaje_principal) && heap_elementos(juego->gimnasios) == 0)
+                printf("Para iniciar la partida es necesario cargar un personaje y al menos un gimnasio.\n");
+            else if(!(juego->personaje_principal))
+                printf("Para iniciar la partida falta cargar un personaje.\n");
+            else if(heap_elementos(juego->gimnasios) == 0)
+                printf("Para iniciar la partida falta cargar al menos un gimnasio.\n");
             printf("Ingrese uno de los caracteres indicados: ");
             scanf(" %c", &letra_ingresada);
         }

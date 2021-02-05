@@ -1,0 +1,15 @@
+G;Gimnasio de Ciudad Verde;3;1
+L;Doyle Monti
+P;BlastoiseMega Blastoise;22;24;34
+P;Caterpie;25;10;35
+P;Metapod;20;10;15
+P;Butterfree;19;25;10
+P;Nidorino;23;22;27
+P;Nidoking;14;22;25
+E;Ditte Kádár
+P;Clefairy;25;15;28
+P;Goldeen;10;20;20
+E;Emil Mayer
+P;Poliwag;23;20;20
+P;Poliwhirl;29;24;26
+P;Poliwrath;22;23;21

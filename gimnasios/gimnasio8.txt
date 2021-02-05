@@ -1,0 +1,18 @@
+G;Gimnasio de Ciudad Blanca;7;2
+L;Fabricio Rocca
+P;Roserade;46;15;44
+P;Cranidos;58;57;40
+P;Rampardos;58;55;60
+P;Shieldon;30;42;62
+P;Bastiodon;30;52;36
+E;Samuhel Chester
+P;Shellos;34;48;48
+P;Gastrodon;39;25;19
+P;Ambipom;25;55;37
+P;Drifloon;24;50;34
+E;Theodotos Barna
+P;LucarioMega Lucario;52;37;62
+P;Hippopotas;32;58;57
+P;Hippowdon;47;56;38
+P;Skorupi;20;50;41
+P;Drapion;59;51;62

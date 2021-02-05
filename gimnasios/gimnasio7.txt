@@ -1,0 +1,13 @@
+G;Gimnasio de Ciudad Negra;6;3
+L;Susanita Jakobsen
+P;DeoxysSpeed Forme;42;60;47
+P;Turtwig;31;43;26
+P;Grotle;36;45;33
+P;Torterra;56;49;60
+E;Tineke Underhill
+P;Piplup;40;51;53
+P;Prinplup;50;18;51
+P;Empoleon;60;58;57
+E;Roslindis Grillo
+P;Luxio;60;41;49
+P;Luxray;60;63;56

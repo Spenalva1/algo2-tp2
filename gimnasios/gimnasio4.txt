@@ -1,0 +1,14 @@
+G;Gimnasio de Ciudad Naranja;4;3
+L;Fitz Salihović
+P;Hitmontop;21;35;25
+P;Smoochum;34;30;25
+P;Elekid;33;33;37
+P;Magby;30;38;37
+E;Nektaria Akkersdijk
+P;Entei;32;45;38
+P;Suicune;34;31;30
+P;Larvitar;31;30;30
+E;Onur Iyer
+P;Grovyle;48;56;45
+P;Sceptile;52;63;38
+P;SceptileMega Sceptile;55;57;33

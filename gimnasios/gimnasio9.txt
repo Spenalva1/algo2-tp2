@@ -1,0 +1,13 @@
+G;Gimnasio de Ciudad Rosa;8;1
+L;Cleon Eccleston
+P;GalladeMega Gallade;59;27;61
+P;Probopass;40;55;55
+P;Dusknoir;45;60;25
+P;Froslass;56;41;20
+E;Blaguna Ó Conchobhair
+P;Azelf;55;47;36
+P;Dialga;33;28;55
+P;Palkia;48;26;46
+E;Alin Bernhardsson
+P;Heatran;49;37;32
+P;Regigigas;51;48;62
