@@ -394,10 +394,10 @@ int elegir_pokemon_rival(lista_t* obtenidos, lista_t* pokemones_rival){
     printf("Los pokemones de tu rival son:\n");
     lista_con_cada_elemento(pokemones_rival, &mostrar_pokemon_con_id, &i);
     printf("Ingrese el número del pokemon deseado o \"0\" si no desea ninguno: ");
-    scanf("%lu", &i);
+    scanf(" %lu", &i);
     while(i > lista_elementos(pokemones_rival)){
         printf("El número ingresado no es válido, ingrese el número del pokemon deseado o \"0\" si no desea ninguno: ");
-        scanf("%lu", &i);
+        scanf(" %lu", &i);
     }
     if(i == 0) return OK;
     pokemon_t* pokemon = malloc(sizeof(pokemon_t));
@@ -425,10 +425,12 @@ bool cambio_valido(lista_t* pokemones, pokemon_t* pokemon){
 int agregar_gimnasio(heap_t* gimnasios){
     printf("Ingrese la ruta del archivo del gimnasio que desea agregar: ");
     char ruta[MAX_RUTA];
-    scanf("%s", ruta);
+    scanf(" %s", ruta);
     gimnasio_t* gimnasio = gimnasio_crear(ruta);
-    int resultado;
-    if(gimnasio && (resultado = heap_insertar_elemento(gimnasios, gimnasio) == OK)) return OK;
+    if(gimnasio && heap_insertar_elemento(gimnasios, gimnasio) == OK){
+        printf(VERDE "%s" RESET " añadido con exito.\n", gimnasio->nombre);
+        return OK;
+    }
     printf("Error al cargar gimnasio, intente devuelta.\n");
     return ERROR;
 }
@@ -436,7 +438,7 @@ int agregar_gimnasio(heap_t* gimnasios){
 int agregar_personaje(juego_t* juego){
     printf("Ingrese la ruta del archivo del personaje que desea cargar: ");
     char ruta[MAX_RUTA];
-    scanf("%s", ruta);
+    scanf(" %s", ruta);
     personaje_t* personaje = personaje_principal_crear(ruta);
     if(personaje){
         juego->personaje_principal = personaje;
@@ -464,20 +466,20 @@ void cambiar_pokemon(personaje_t* personaje){
     printf("Pokemones obtenidos:\n");
     lista_con_cada_elemento(personaje->pokemon_obtenidos, &mostrar_pokemon, NULL);
     printf("Ingrese el número del pokemon que desee reemplazar o \"0\" si desea salir: ");
-    scanf("%lu", &i);
+    scanf(" %lu", &i);
     while(i > lista_elementos(personaje->pokemon_para_combatir)){
         printf("El número ingresado no es válido. Ingrese el número del pokemon que desee reemplazar o \"0\" si desea salir: ");
-        scanf("%lu", &i);
+        scanf(" %lu", &i);
     }
     if(i == 0) return;
     size_t j = 1;
     printf("Pokemones obtenidos:\n");
     lista_con_cada_elemento(personaje->pokemon_obtenidos, &mostrar_pokemon_con_id, &j);
     printf("Ingrese el número del pokemon que desee para reemplazar a " ROJO "%s " RESET "o \"0\" si desea salir: ", ((pokemon_t*)lista_elemento_en_posicion(personaje->pokemon_para_combatir, i-1))->nombre);
-    scanf("%lu", &j);
+    scanf(" %lu", &j);
     while(j > lista_elementos(personaje->pokemon_obtenidos)){
         printf("El número ingresado no es válido. Ingrese el número del pokemon que desee o \"0\" si desea salir: ");
-        scanf("%lu", &j);
+        scanf(" %lu", &j);
     }
     if(j == 0) return;
     while(j > lista_elementos(personaje->pokemon_obtenidos) || !cambio_valido(personaje->pokemon_para_combatir, lista_elemento_en_posicion(personaje->pokemon_obtenidos, j-1))){
@@ -485,7 +487,7 @@ void cambiar_pokemon(personaje_t* personaje){
             printf("El número ingresado no es válido. Ingrese el número del pokemon que desee o \"0\" si desea salir: ");
         if(!cambio_valido(personaje->pokemon_para_combatir, (pokemon_t*)lista_elemento_en_posicion(personaje->pokemon_obtenidos, j-1)))
             printf("El pokemon elegido ya se encuentra para combatir. Ingrese el número del pokemon que desee o \"0\" si desea salir: ");
-        scanf("%lu", &j);
+        scanf(" %lu", &j);
     }
     if(j == 0) return;
     lista_borrar_de_posicion(personaje->pokemon_para_combatir, i-1);

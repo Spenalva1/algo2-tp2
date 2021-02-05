@@ -1,6 +1,6 @@
 G;Gimnasio de Ciudad Roja;2;5
 L;Amalie Melnik
-P;BlastoiseMega Blastoise;12;24;24
+P;Mega Blastoise;12;24;24
 P;Caterpie;45;30;15
 P;Metapod;30;20;35
 P;Butterfree;29;15;30

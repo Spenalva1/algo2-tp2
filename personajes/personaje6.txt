@@ -3,6 +3,6 @@ P;Luvdisc;55;30;55
 P;Bagon;50;38;60
 P;Shelgon;50;60;58
 P;Salamence;54;51;52
-P;SalamenceMega Salamence;60;57;48
 P;Beldum;30;55;47
+P;Banette;60;31;42
 P;Metang;50;44;63

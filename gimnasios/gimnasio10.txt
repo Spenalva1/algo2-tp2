@@ -2,15 +2,15 @@ G;Gimnasio de Ciudad Violeta;9;5
 L;Amalthea Keyes
 P;Wingull;45;30;30
 P;Pelipper;14;50;46
-P;Ralts;40;25;25
+P;Mega Altaria;21;58;58
 P;Kirlia;50;35;35
 P;Gardevoir;62;25;23
 E;Joan Magro
 P;Illumise;50;47;55
+P;Ralts;40;25;25
 P;Roselia;9;60;45
 P;Gulpin;40;43;53
-P;Swalot;55;33;57
 E;Douglas Esteves
-P;AltariaMega Altaria;21;58;58
+P;Swalot;55;33;57
 P;Zangoose;55;46;60
 P;Seviper;60;55;60

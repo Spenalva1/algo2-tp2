@@ -1,6 +1,5 @@
 E;Santi
-P;Pidgeot;61;60;55
-P;PidgeotMega Pidgeot;61;60;60
+P;Mega Pidgeot;61;60;60
 P;Rattata;52;56;35
 P;Raticate;57;61;60
 P;Spearow;50;60;30

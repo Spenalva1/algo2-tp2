@@ -1,8 +1,7 @@
 G;Gimnasio de Ciudad Azul;15;4
 L;Felim Huber
 P;Chimecho;37;50;45
-P;Absol;28;42;60
-P;AbsolMega Absol;62;60;60
+P;Mega Absol;62;60;60
 P;Wynaut;23;23;48
 E;Iomhar Aartsen
 P;Regice;50;50;59
@@ -10,4 +9,5 @@ P;Registeel;50;63;48
 P;Latias;52;55;58
 E;Ruth McNiven
 P;DeoxysDefense Forme;62;48;62
+P;Absol;28;42;60
 P;DeoxysSpeed Forme;42;60;47

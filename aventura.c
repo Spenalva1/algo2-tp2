@@ -80,6 +80,11 @@ void derrota(juego_t* juego);
 */
 void maestro_pokemon(juego_t* juego);
 
+/*
+*
+*/
+char pedir_char();
+
 int main(){
     juego_t juego;
     juego.simular = 0;
@@ -102,12 +107,12 @@ void menu_victoria(juego_t* juego){
     char letra_ingresada;
     gimnasio_t* gimnasio = (gimnasio_t*)heap_obtener_raiz(juego->gimnasios);
     bool tomo_prestado = false;
-    printf("Felicitaciones, has ganado la medalla del gimnasio" VERDE " %s" RESET ". Seleccione una de las siguientes opciones:\n", gimnasio->nombre);
+    printf("\n\nFelicitaciones, has ganado la medalla del gimnasio" VERDE " %s" RESET ". Seleccione una de las siguientes opciones:\n", gimnasio->nombre);
     if(!tomo_prestado) printf("T -> Tomar prestado un pokemon del lider del gimnasio\n");
     printf("C -> Cambiar pokemones de batalla\n");
     printf("N -> %s\n", (heap_elementos(juego->gimnasios)-1) ? "Proximo gimnasio" : "Continuar");
     printf("Ingrese uno de los caracteres indicados: ");
-    scanf(" %c", &letra_ingresada);
+    letra_ingresada = pedir_char();
     bool menu_terminado = false, letra_valida = false;
     while(!menu_terminado){
         letra_valida = false;
@@ -132,13 +137,13 @@ void menu_victoria(juego_t* juego){
             printf("C -> Cambiar pokemones de batalla\n");
             printf("N -> %s\n", (heap_elementos(juego->gimnasios)-1) ? "Proximo gimnasio" : "Continuar");
             printf("Ingrese uno de los caracteres indicados: ");
-            scanf(" %c", &letra_ingresada);
+            letra_ingresada = pedir_char();
         }
     }   
 }
 
 void derrota(juego_t* juego){
-    printf(ROJO "¡Has fracasado en el camino para convertirte en entrenador pokemon!\n" RESET);
+    printf(ROJO "\n\n¡Has fracasado en el camino para convertirte en entrenador pokemon!\n" RESET);
     printf("Inténtalo devuelta en el futuro.\n");
     terminar_juego(juego);
 }
@@ -150,13 +155,13 @@ void menu_derrota(juego_t* juego){
     }
     gimnasio_t* gimnasio = heap_obtener_raiz(juego->gimnasios);
     entrenador_t* rival = (lista_vacia(gimnasio->entrenadores)) ? gimnasio->lider : lista_ultimo(gimnasio->entrenadores);
-    printf(ROJO"¡Has perdido la batalla contra %s!\n" RESET" Seleccione una de las siguientes opciones:\n", rival->nombre);
+    printf(ROJO"\n\n¡Has perdido la batalla contra %s!\n" RESET" Seleccione una de las siguientes opciones:\n", rival->nombre);
     printf("C -> Cambiar pokemones de batalla\n");
     printf("R -> Reintenta\n");
     printf("F -> Finalizar partida\n");
     printf("Ingrese uno de los caracteres indicados: ");
     char letra_ingresada;
-    scanf(" %c", &letra_ingresada);
+    letra_ingresada = pedir_char();
     bool menu_terminado = false, letra_valida = false;
     while(!menu_terminado){
         letra_valida = false;
@@ -182,7 +187,7 @@ void menu_derrota(juego_t* juego){
             printf("R -> Reintenta\n");
             printf("F -> Finalizar partida\n");
             printf("Ingrese uno de los caracteres indicados: ");
-            scanf(" %c", &letra_ingresada);
+            letra_ingresada = pedir_char();
         }
     }
 }
@@ -191,7 +196,7 @@ void menu_gimnasio(juego_t* juego){
     char letra_ingresada;
     gimnasio_t* gimnasio = heap_obtener_raiz(juego->gimnasios);
     bool lider_habilitado = lista_vacia(gimnasio->entrenadores);
-    printf("Bienvenido al gimnasio " VERDE "\"%s\"" RESET " Seleccione una de las siguientes opciones:\n", gimnasio->nombre);
+    printf("\n\nBienvenido al gimnasio " VERDE "\"%s\"" RESET " Seleccione una de las siguientes opciones:\n", gimnasio->nombre);
     if(juego->simular){
         batallar(juego);
         return;
@@ -201,7 +206,7 @@ void menu_gimnasio(juego_t* juego){
     printf("C -> Cambiar pokemones de batalla\n");
     printf("B -> Batallar con el %s\n", (lider_habilitado) ? "lider" : "próximo entrenador");
     printf("Ingrese uno de los caracteres indicados: ");
-    scanf(" %c", &letra_ingresada);
+    letra_ingresada = pedir_char();
     bool menu_terminado = false, letra_valida = false;
     while(!menu_terminado){
         letra_valida = false;
@@ -232,14 +237,14 @@ void menu_gimnasio(juego_t* juego){
             printf("C -> Cambiar pokemones de batalla\n");
             printf("B -> Batallar con el %s\n", (lider_habilitado) ? "lider" : "próximo entrenador");
             printf("Ingrese uno de los caracteres indicados: ");
-            scanf(" %c", &letra_ingresada);
+            letra_ingresada = pedir_char();
         }
     }
 }
 
 void menu_inicio(juego_t* juego){
     char letra_ingresada;
-    printf("Bienvenido a ¡Una aventura Pokémon! Seleccione una de las siguientes opciones:\n");
+    printf("\n\nBienvenido a ¡Una aventura Pokémon! Seleccione una de las siguientes opciones:\n");
     if(!(juego->personaje_principal))
         printf("E -> Cargar el entrenador principal\n");
     printf("A -> Cargar un gimnasio\n");
@@ -254,7 +259,7 @@ void menu_inicio(juego_t* juego){
     else if(heap_elementos(juego->gimnasios) == 0)
         printf("Para iniciar la partida falta cargar al menos un gimnasio.\n");
     printf("Ingrese uno de los caracteres indicados: ");
-    scanf(" %c", &letra_ingresada);
+    letra_ingresada = pedir_char();
     bool menu_terminado = false;
     bool letra_valida = false;
     while(!menu_terminado){
@@ -295,7 +300,7 @@ void menu_inicio(juego_t* juego){
             else if(heap_elementos(juego->gimnasios) == 0)
                 printf("Para iniciar la partida falta cargar al menos un gimnasio.\n");
             printf("Ingrese uno de los caracteres indicados: ");
-            scanf(" %c", &letra_ingresada);
+            letra_ingresada = pedir_char();
         }
     }
 }
@@ -309,16 +314,16 @@ void batallar(juego_t* juego){
     lista_iterador_t* it2 = lista_iterador_crear(rival->pokemones);
     char letra_ingresada;
     int i = 1;
-    printf(VERDE "%s" RESET " vs. " ROJO "%s %s" RESET "\n", juego->personaje_principal->nombre, rival->nombre, es_lider ? "(lider)" : "");
+    printf(VERDE "\n\n%s" RESET " vs. " ROJO "%s %s" RESET "\n", juego->personaje_principal->nombre, rival->nombre, es_lider ? "(lider)" : "");
     while(lista_iterador_tiene_siguiente(it1) && lista_iterador_tiene_siguiente(it2)){
         if(!juego->simular){
             printf("Combate n°%i:\n", i);
             mostrar_combate_informacion(lista_iterador_elemento_actual(it1), lista_iterador_elemento_actual(it2));
             printf("Ingrese N para realizar el combate: ");
-            scanf(" %c", &letra_ingresada);
+            letra_ingresada = pedir_char();
             while(letra_ingresada != PROXIMO && letra_ingresada != PROXIMO_MIN){
                 printf("Ingrese N para realizar el combate: ");
-                scanf(" %c", &letra_ingresada);
+                letra_ingresada = pedir_char();
             }
         }
         if(batalla(lista_iterador_elemento_actual(it1), lista_iterador_elemento_actual(it2)) == GANO_PRIMERO){
@@ -350,8 +355,16 @@ void batallar(juego_t* juego){
 }
 
 void maestro_pokemon(juego_t* juego){
-    printf("¡Enhorabuena %s!\n", juego->personaje_principal->nombre);
+    printf("\n\n¡Enhorabuena %s!\n", juego->personaje_principal->nombre);
     printf("¡Has obtenido las medallas de todos los gimnasios!\n");
     printf("¡Te has convertido en un maestro pokemon!\n");
     terminar_juego(juego);
+}
+
+char pedir_char(){
+    char letra_ingresada = (char)getchar();
+    while(letra_ingresada == -1 || letra_ingresada == '\n') letra_ingresada = (char)getchar();
+    char b = (char)getchar();
+    while(b != -1 && b != '\n') b = (char)getchar();
+    return letra_ingresada;
 }
