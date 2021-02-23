@@ -48,13 +48,6 @@ void gimnasio_destruir(gimnasio_t* gimnasio);
 void personaje_principal_mostrar(personaje_t* personaje);
 
 /*
-*   lista en pantalla los pokemones del entrenador recibido (pokemones_rival) y permite al usuario elegir uno de ellos
-*   para insertarlo en la lista de obtenidos recivida. Si al elegir un pokemon ocurre un error, devuelve ERROR. En caso
-*   contrario devuelve OK
-*/
-int elegir_pokemon_rival(lista_t* obtenidos, lista_t* pokemones_rival);
-
-/*
 *   permite al usuario cambiar un pokemon de la lista de pokemon_para_combatir por uno de la lista de pokemon_obtenidos
 */
 void cambiar_pokemon(personaje_t* personaje);
@@ -63,11 +56,6 @@ void cambiar_pokemon(personaje_t* personaje);
 *   libera la memoria ocupada por el entrenador recibido
 */
 void entrenador_destruir(entrenador_t* entrenador);
-
-/*
-*   mejora cada habilidad del pokemon recibido si estas son menores a 63
-*/
-void mejorar_pokemon(pokemon_t* pokemon);
 
 /*
 *   Imprime la informacion del gimnasio recibido, mostrando el nombre del mismo, su dificultad, su id de batalla,
