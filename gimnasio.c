@@ -381,14 +381,6 @@ void mejorar_pokemon(pokemon_t* pokemon){
         printf("Las habilidades de %s ya no pueden ser mejoradas.\n", pokemon->nombre);
 }
 
-void batallas_cargar(funcion_batalla* batallas){
-    batallas[0] = &funcion_batalla_1;
-    batallas[1] = &funcion_batalla_2;
-    batallas[2] = &funcion_batalla_3;
-    batallas[3] = &funcion_batalla_4;
-    batallas[4] = &funcion_batalla_5;
-}
-
 int elegir_pokemon_rival(lista_t* obtenidos, lista_t* pokemones_rival){
     size_t i = 1;
     printf("Los pokemones de tu rival son:\n");

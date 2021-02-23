@@ -1,22 +1,8 @@
 #ifndef __BATALLAS_H__
 #define __BATALLAS_H__
 
-#define MAX_NOMBRE 50
-#define CANT_BATALLAS 5
 #define GANO_PRIMERO 1
 #define GANO_SEGUNDO -1
-
-/*
-*   devuelve 1 si el ganador de la batalla es el primer pokemon, y -1 en caso contrario
-*/
-typedef int (*funcion_batalla)(void*, void*);
-
-typedef struct pokemon{
-    char nombre[MAX_NOMBRE];
-    int velocidad;
-    int defensa;
-    int ataque;
-}pokemon_t;
 
 /*
  * Se deberan implementar las 5 funciones de batalla.

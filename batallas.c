@@ -1,5 +1,6 @@
 #include "batallas.h"
 #include <string.h>
+#include "pokemon.h"
 
 int funcion_batalla_1(void* pkm_1, void* pkm_2){
     if( ((pokemon_t*)pkm_1)->velocidad >= ((pokemon_t*)pkm_2)->velocidad )

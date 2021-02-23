@@ -4,6 +4,7 @@
 #include "batallas.h"
 #include "lista.h"
 #include "heap.h"
+#include "pokemon.h"
 
 #define MAX_NOMBRE 50
 #define MAX_RUTA 100
@@ -45,11 +46,6 @@ void gimnasio_destruir(gimnasio_t* gimnasio);
 *   Muestra la informacion de un personaje principal, detallando su nombre, sus pokemones de combate y los obtenidos
 */
 void personaje_principal_mostrar(personaje_t* personaje);
-
-/*
-*   carga los tipos de batallas ubicados en batalla.c en el vector recibido
-*/
-void batallas_cargar(funcion_batalla batallas[CANT_BATALLAS]);
 
 /*
 *   lista en pantalla los pokemones del entrenador recibido (pokemones_rival) y permite al usuario elegir uno de ellos
