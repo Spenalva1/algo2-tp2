@@ -32,6 +32,7 @@ bool mostrar_pokemon_con_id(void* pokemon, void* contador){
 
 /*
 *   Lee el gimnasio de la ruta recibida, esperando como minimo la informacion del gimnasio, un lider, y al menos un pokemon por lider/entrenador
+*   Puede leer mas de un gimnasio dentro de un mismo archivo mientras se cumpla el formato
 */
 void gimnasios_cargar(char ruta[MAX_RUTA], heap_t* gimnasios, FILE* archivo){
     char letra;

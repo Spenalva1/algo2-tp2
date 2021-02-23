@@ -81,7 +81,7 @@ void derrota(juego_t* juego);
 void maestro_pokemon(juego_t* juego);
 
 /*
-*
+*   lee un char por consola y lo devuelve. Limpia el buffer de los demás caracteres que hayan podido ser ingresados por el usuario
 */
 char pedir_char();
 
