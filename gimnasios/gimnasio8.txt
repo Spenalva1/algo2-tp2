@@ -11,7 +11,7 @@ P;Gastrodon;39;25;19
 P;Ambipom;25;55;37
 P;Drifloon;24;50;34
 E;Theodotos Barna
-P;Mega Lucario;52;37;62
+P;Lucario;52;37;62
 P;Hippopotas;32;58;57
 P;Hippowdon;47;56;38
 P;Skorupi;20;50;41

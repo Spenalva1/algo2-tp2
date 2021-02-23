@@ -1,0 +1,142 @@
+G;Gimnasio de Ciudad Celeste;1;2
+L;Misty
+P;Staryu;20;20;20
+P;Starmie;20;30;20
+E;Dominguera Diana
+P;Goldeen;20;30;20
+E;Nadador Luis
+P;Shellder;32;25;15
+P;Horsea;25;15;0
+P;Pikachu;15;20;35
+G;Gimnasio de Ciudad Roja;2;5
+L;Amalie Melnik
+P;Blastoise;12;24;24
+P;Caterpie;45;30;15
+P;Metapod;30;20;35
+P;Butterfree;29;15;30
+P;Weedle;30;15;30
+E;Janine Mangold
+P;Cleffa;15;25;18
+P;Igglybuff;15;20;15
+P;Togetic;15;10;23
+E;Frederikke Willey
+P;Shellder;10;20;30
+P;Horsea;25;10;20
+P;Pikachu;15;20;35
+G;Gimnasio de Ciudad Verde;3;1
+L;Doyle Monti
+P;Blastoise;22;24;34
+P;Caterpie;25;10;35
+P;Metapod;20;10;15
+P;Butterfree;19;25;10
+P;Nidorino;23;22;27
+P;Nidoking;14;22;25
+E;Ditte Kádár
+P;Clefairy;25;15;28
+P;Goldeen;10;20;20
+E;Emil Mayer
+P;Poliwag;23;20;20
+P;Poliwhirl;29;24;26
+P;Poliwrath;22;23;21
+G;Gimnasio de Ciudad Naranja;4;3
+L;Fitz Salihović
+P;Hitmontop;21;35;25
+P;Smoochum;34;30;25
+P;Elekid;33;33;37
+P;Magby;30;38;37
+E;Nektaria Akkersdijk
+P;Entei;32;45;38
+P;Suicune;34;31;30
+P;Larvitar;31;30;30
+E;Onur Iyer
+P;Grovyle;48;56;45
+P;Sceptile;52;63;38
+P;Sceptile;55;57;33G;Gimnasio de Ciudad Esmeralda;5;4
+L;Amalthea Keyes
+P;Wingull;45;30;30
+P;Pelipper;14;50;46
+P;Ralts;40;25;25
+P;Kirlia;50;35;35
+P;Gardevoir;62;25;23
+E;Joan Magro
+P;Illumise;50;47;55
+P;Roselia;9;60;45
+P;Gulpin;40;43;53
+P;Swalot;55;33;57
+E;Douglas Esteves
+P;Altaria;21;58;58
+P;Zangoose;55;46;60
+P;Seviper;60;55;60
+G;Gimnasio de Ciudad Azul;15;4
+L;Felim Huber
+P;Chimecho;37;50;45
+P;Absol;62;60;60
+P;Wynaut;23;23;48
+E;Iomhar Aartsen
+P;Regice;50;50;59
+P;Registeel;50;63;48
+P;Latias;52;55;58
+E;Ruth McNiven
+P;DeoxysDefense Forme;62;48;62
+P;Absol;28;42;60
+P;DeoxysSpeed Forme;42;60;47
+G;Gimnasio de Ciudad Negra;6;3
+L;Susanita Jakobsen
+P;DeoxysSpeed Forme;42;60;47
+P;Turtwig;31;43;26
+P;Grotle;36;45;33
+P;Torterra;56;49;60
+E;Tineke Underhill
+P;Piplup;40;51;53
+P;Prinplup;50;18;51
+P;Empoleon;60;58;57
+E;Roslindis Grillo
+P;Luxio;60;41;49
+P;Luxray;60;63;56
+G;Gimnasio de Ciudad Blanca;7;2
+L;Fabricio Rocca
+P;Roserade;46;15;44
+P;Cranidos;58;57;40
+P;Rampardos;58;55;60
+P;Shieldon;30;42;62
+P;Bastiodon;30;52;36
+E;Samuhel Chester
+P;Shellos;34;48;48
+P;Gastrodon;39;25;19
+P;Ambipom;25;55;37
+P;Drifloon;24;50;34
+E;Theodotos Barna
+P;Lucario;52;37;62
+P;Hippopotas;32;58;57
+P;Hippowdon;47;56;38
+P;Skorupi;20;50;41
+P;Drapion;59;51;62
+G;Gimnasio de Ciudad Rosa;8;1
+L;Cleon Eccleston
+P;Gallade;59;27;61
+P;Probopass;40;55;55
+P;Dusknoir;45;60;25
+P;Froslass;56;41;20
+E;Blaguna Ó Conchobhair
+P;Azelf;55;47;36
+P;Dialga;33;28;55
+P;Palkia;48;26;46
+E;Alin Bernhardsson
+P;Heatran;49;37;32
+P;Regigigas;51;48;62
+G;Gimnasio de Ciudad Violeta;9;5
+L;Amalthea Keyes
+P;Wingull;45;30;30
+P;Pelipper;14;50;46
+P;Altaria;21;58;58
+P;Kirlia;50;35;35
+P;Gardevoir;62;25;23
+E;Joan Magro
+P;Illumise;50;47;55
+P;Ralts;40;25;25
+P;Roselia;9;60;45
+P;Gulpin;40;43;53
+E;Douglas Esteves
+P;Swalot;55;33;57
+P;Zangoose;55;46;60
+P;Seviper;60;55;60

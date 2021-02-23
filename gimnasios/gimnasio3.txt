@@ -1,6 +1,6 @@
 G;Gimnasio de Ciudad Verde;3;1
 L;Doyle Monti
-P;Mega Blastoise;22;24;34
+P;Blastoise;22;24;34
 P;Caterpie;25;10;35
 P;Metapod;20;10;15
 P;Butterfree;19;25;10

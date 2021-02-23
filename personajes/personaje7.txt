@@ -1,6 +1,6 @@
 E;Señor UBA
-P;Mega Salamence;60;57;48
+P;Salamence;60;57;48
 P;Shuppet;45;59;35
-P;Mega Banette;42;61;46
+P;Banette;42;61;46
 P;Duskull;25;40;63
 P;Dusclops;25;11;22

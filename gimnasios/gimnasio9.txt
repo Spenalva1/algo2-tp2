@@ -1,6 +1,6 @@
 G;Gimnasio de Ciudad Rosa;8;1
 L;Cleon Eccleston
-P;Mega Gallade;59;27;61
+P;Gallade;59;27;61
 P;Probopass;40;55;55
 P;Dusknoir;45;60;25
 P;Froslass;56;41;20

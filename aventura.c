@@ -143,7 +143,9 @@ void menu_victoria(juego_t* juego){
 }
 
 void derrota(juego_t* juego){
-    printf(ROJO "\n\n¡Has fracasado en el camino para convertirte en entrenador pokemon!\n" RESET);
+    gimnasio_t* gimnasio = (gimnasio_t*)heap_obtener_raiz(juego->gimnasios);
+    printf("\n\nNo has podido superar " ROJO "%s\n" RESET, gimnasio->nombre);
+    printf(ROJO "¡Has fracasado en el camino para convertirte en entrenador pokemon!\n" RESET);
     printf("Inténtalo devuelta en el futuro.\n");
     terminar_juego(juego);
 }
@@ -265,7 +267,7 @@ void menu_inicio(juego_t* juego){
     while(!menu_terminado){
         letra_valida = false;
         if(letra_ingresada == AGREGAR_GIMNASIO || letra_ingresada == AGREGAR_GIMNASIO_MIN){
-            agregar_gimnasio(juego->gimnasios);
+            agregar_gimnasios(juego->gimnasios);
             letra_valida = true;
         }
         if((letra_ingresada == ENTRENADOR || letra_ingresada == ENTRENADOR_MIN) && !(juego->personaje_principal)){

@@ -11,4 +11,4 @@ P;Larvitar;31;30;30
 E;Onur Iyer
 P;Grovyle;48;56;45
 P;Sceptile;52;63;38
-P;Mega Sceptile;55;57;33
+P;Sceptile;55;57;33

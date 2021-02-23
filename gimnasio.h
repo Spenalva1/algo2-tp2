@@ -76,10 +76,10 @@ void mejorar_pokemon(pokemon_t* pokemon);
 void gimnasio_mostrar(gimnasio_t* gimnasio);
 
 /*
-*   Pide al usuario la ruta de un archivo que contenga un gimnasio para leerlo, reservar memoria, y agregarlo en el heap recibido
+*   Pide al usuario la ruta de un archivo que contenga uno o más gimnasios para leerlo, reservar memoria, y agregarlo/s en el heap recibido
 *   Retorna ERROR si hubo un error, OK en caso contrario
 */
-int agregar_gimnasio(heap_t* gimnasios);
+void agregar_gimnasios(heap_t* gimnasios);
 
 /*
 *   Pide al usuario la ruta de un archivo que contenga un personaje para leerlo, reservar memoria, y guardar su puntero en el juego recibido

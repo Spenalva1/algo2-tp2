@@ -11,6 +11,6 @@ P;Roselia;9;60;45
 P;Gulpin;40;43;53
 P;Swalot;55;33;57
 E;Douglas Esteves
-P;Mega Altaria;21;58;58
+P;Altaria;21;58;58
 P;Zangoose;55;46;60
 P;Seviper;60;55;60
