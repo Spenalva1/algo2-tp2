@@ -270,7 +270,7 @@ void menu_inicio(juego_t* juego){
             agregar_gimnasios(juego->gimnasios);
             letra_valida = true;
         }
-        if((letra_ingresada == ENTRENADOR || letra_ingresada == ENTRENADOR_MIN) && !(juego->personaje_principal)){
+        if(letra_ingresada == ENTRENADOR || letra_ingresada == ENTRENADOR_MIN){
             agregar_personaje(juego);
             letra_valida = true;
         }
@@ -290,6 +290,9 @@ void menu_inicio(juego_t* juego){
 
             if(!(juego->personaje_principal))
                 printf("E -> Cargar el entrenador principal\n");
+            else 
+                printf("E -> Reemplazar el entrenador principal\n");
+
             printf("A -> Cargar un gimnasio\n");
             if(juego->personaje_principal && heap_elementos(juego->gimnasios) > 0){
                 printf("I -> Comenzar partida\n");

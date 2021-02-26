@@ -383,7 +383,9 @@ int agregar_personaje(juego_t* juego){
     scanf(" %s", ruta);
     personaje_t* personaje = personaje_principal_crear(ruta);
     if(personaje){
+        if(juego->personaje_principal) personaje_principal_destruir(juego->personaje_principal);
         juego->personaje_principal = personaje;
+        printf(VERDE "%s" RESET " agregado correctamente!\n", juego->personaje_principal->nombre);
         return OK;
     }
     printf("Error al cargar el personaje, intente devuelta.\n");

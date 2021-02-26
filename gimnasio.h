@@ -70,7 +70,8 @@ void gimnasio_mostrar(gimnasio_t* gimnasio);
 void agregar_gimnasios(heap_t* gimnasios);
 
 /*
-*   Pide al usuario la ruta de un archivo que contenga un personaje para leerlo, reservar memoria, y guardar su puntero en el juego recibido
+*   Pide al usuario la ruta de un archivo que contenga un personaje para leerlo. En caso de que ya se haya cargado un personaje principal,
+*   se remplazara, y, en caso contrario, se reservará memoria. El puntero al personaje cargado se almacenara en el juego recibido.
 *   Retorna ERROR si hubo un error, OK en caso contrario
 */
 int agregar_personaje(juego_t* juego);
