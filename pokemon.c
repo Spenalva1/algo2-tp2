@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "pokemon.h"
 
-#define MAX_HABILIDAD 63
+#define MAX_BONIFICACIONES 63
 #define ROJO "\033[0;31m"
 #define VERDE "\033[0;32m"
 #define RESET "\033[0m"
@@ -18,23 +18,16 @@ void batallas_cargar(funcion_batalla* batallas){
 }
 
 void mejorar_pokemon(pokemon_t* pokemon){
-    bool mejora = false;
-    if(pokemon->ataque < MAX_HABILIDAD){
-        pokemon->ataque++;
-        mejora = true;
+    if(!pokemon) return;
+    if(pokemon->bonificaciones >= MAX_BONIFICACIONES){
+        printf("Las habilidades de" VERDE " %s " RESET "ya no pueden ser mejoradas.\n", pokemon->nombre);
+        return;
     }
-    if(pokemon->velocidad < MAX_HABILIDAD){
-        pokemon->velocidad++;
-        mejora = true;
-    }
-    if(pokemon->defensa < MAX_HABILIDAD){
-        pokemon->defensa++;
-        mejora = true;
-    }
-    if(mejora)
-        printf("Las habilidades de %s han sido mejoradas.\n", pokemon->nombre);
-    else
-        printf("Las habilidades de %s ya no pueden ser mejoradas.\n", pokemon->nombre);
+    pokemon->velocidad++;
+    pokemon->ataque++;
+    pokemon->defensa++;
+    pokemon->bonificaciones++;
+    printf("Las habilidades de" VERDE " %s " RESET "han sido mejoradas.\n", pokemon->nombre);
 }
 
 int elegir_pokemon_rival(lista_t* obtenidos, lista_t* pokemones_rival){

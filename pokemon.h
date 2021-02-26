@@ -18,12 +18,13 @@ typedef struct pokemon{
     int velocidad;
     int defensa;
     int ataque;
+    int bonificaciones;
 }pokemon_t;
 
 void batallas_cargar(funcion_batalla* batallas);
 
 /*
-*   mejora cada habilidad del pokemon recibido si estas son menores a 63
+*   mejora cada habilidad del pokemon recibido si su bonificaciones es menor a 63
 */
 void mejorar_pokemon(pokemon_t* pokemon);
 

@@ -66,6 +66,7 @@ void gimnasios_cargar(char ruta[MAX_RUTA], heap_t* gimnasios, FILE* archivo){
     }
 
     pokemon_t pokemon;
+    pokemon.bonificaciones = 0;
     leidos = fscanf(archivo, FORMATO_POKEMON, pokemon.nombre, &(pokemon.velocidad), &(pokemon.ataque), &(pokemon.defensa));
     if(leidos != 4){
         fclose(archivo);
@@ -263,6 +264,7 @@ personaje_t* personaje_principal_crear(char ruta[MAX_RUTA]){
     pokemon_t* pokemon_ptr = NULL;
     personaje_t* personaje_ptr = NULL;
     pokemon_t pokemon;
+    pokemon.bonificaciones = 0;
     personaje_t personaje;
 
     char letra = (char)fgetc(archivo);
