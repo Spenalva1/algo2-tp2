@@ -30,7 +30,7 @@ void gimnasios_cargar(char ruta[MAX_RUTA], heap_t* gimnasios, FILE* archivo){
         letra = (char)fgetc(archivo);
         if(letra != GIMNASIO){
             fclose(archivo);
-            printf("Error al leer el archivo.");
+            printf("Error al leer el archivo.\n");
             return;
         }
     }
@@ -39,21 +39,26 @@ void gimnasios_cargar(char ruta[MAX_RUTA], heap_t* gimnasios, FILE* archivo){
     int leidos = fscanf(archivo, FORMATO_GIMNASIO, gimnasio.nombre, &(gimnasio.dificultad), &(gimnasio.id_puntero_funcion));
     if(leidos != 3){
         fclose(archivo);
-        printf("Error al leer el archivo.");
+        printf("Error al leer el archivo.\n");
         return;
+    } else if(gimnasio.id_puntero_funcion > CANT_BATALLAS || gimnasio.id_puntero_funcion < 1) {
+        printf("Id funcion de batalla no valido. Este ID tiene que ser un numero entre 1 y 5 inclusive.\n");
+        fclose(archivo);
+        return;
+
     }
 
     letra = (char)fgetc(archivo);
     if(letra != LIDER){
         fclose(archivo);
-        printf("Error al leer el archivo.");
+        printf("Error al leer el archivo.\n");
         return;
     }
     entrenador_t entrenador;
     leidos = fscanf(archivo, FORMATO_ENTRENADOR, entrenador.nombre);
     if(leidos != 1){
         fclose(archivo);
-        printf("Error al leer el archivo.");
+        printf("Error al leer el archivo.\n");
         return;
     }
 
@@ -61,7 +66,7 @@ void gimnasios_cargar(char ruta[MAX_RUTA], heap_t* gimnasios, FILE* archivo){
     letra = (char)fgetc(archivo);
     if(letra != POKEMON){
         fclose(archivo);
-        printf("Error al leer el archivo.");
+        printf("Error al leer el archivo.\n");
         return;
     }
 
@@ -70,21 +75,21 @@ void gimnasios_cargar(char ruta[MAX_RUTA], heap_t* gimnasios, FILE* archivo){
     leidos = fscanf(archivo, FORMATO_POKEMON, pokemon.nombre, &(pokemon.velocidad), &(pokemon.ataque), &(pokemon.defensa));
     if(leidos != 4){
         fclose(archivo);
-        printf("Error al leer el archivo.");
+        printf("Error al leer el archivo.\n");
         return;
     }
 
     gimnasio_t* gimnasio_ptr = malloc(sizeof(gimnasio_t));
     if(!gimnasio_ptr){
         fclose(archivo);
-        printf("Error al leer el archivo.");
+        printf("Error al leer el archivo.\n");
         return;
     }
     entrenador_t* entrenador_ptr = malloc(sizeof(entrenador_t));
     if(!entrenador_ptr){
         fclose(archivo);
         free(gimnasio_ptr);
-        printf("Error al leer el archivo.");
+        printf("Error al leer el archivo.\n");
         return;
     }
     pokemon_t* pokemon_ptr = malloc(sizeof(pokemon_t));
@@ -92,7 +97,7 @@ void gimnasios_cargar(char ruta[MAX_RUTA], heap_t* gimnasios, FILE* archivo){
         fclose(archivo);
         free(gimnasio_ptr);
         free(entrenador_ptr);
-        printf("Error al leer el archivo.");
+        printf("Error al leer el archivo.\n");
         return;
     }
 
@@ -107,7 +112,7 @@ void gimnasios_cargar(char ruta[MAX_RUTA], heap_t* gimnasios, FILE* archivo){
         free(gimnasio_ptr);
         free(entrenador_ptr);
         free(pokemon_ptr);
-        printf("Error al leer el archivo.");
+        printf("Error al leer el archivo.\n");
         return;
     }
 
