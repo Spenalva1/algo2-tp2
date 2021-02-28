@@ -1,10 +1,10 @@
 Se entrega la implementacion de TP 2 "¡Una aventura Pokémon!". 
 
 Compilacion: 
-    gcc *.c -o abb -g -std=c99 -Wall -Wconversion -Wtype-limits -pedantic -Werror -O0
+    gcc *.c -o aventura -g -std=c99 -Wall -Wconversion -Wtype-limits -pedantic -Werror -O0
 
 Ejecucion:
-    ./abb
+    ./aventura
 
 Ejecucion con valgrind:
     valgrind --leak-check=full --track-origins=yes --show-reachable=yes ./abb
@@ -45,3 +45,4 @@ En el trabajo se realizo la implementacion de un heap para ser utilizado para al
 
 Para las batallas entre el personaje principal y un entrenador, se utilizan los iteradores implementados en el cuatrimestre. Se crea un iterador para la listas de pokemones de batalla de cada uno. Se realiza la batalla entre dos pokemones, y se itera sobre la lista del pokemon perdedor y así sucesivamente hasta que un iterador llegue al final de su lista, lo que significara que el poseedor de dicha lista es el perdedor de la batalla.
   
+Las funciones utilizadas pra cargar los gimnasios y el personaje principal son extensas debido a los chequeos que se realizan para validar los mismo. En el caso del gimnasiose chequea que tenga un nombre, un id de batalla entre 1 y 5 inclusive, y un numero indicando la dificultad. Luego se verifica que posea un lider y que éste tenga al menos 1 pokemon. Una vez garantizado lo anterior, el gimnasio ya es valido y luego, por cada entrenador que se encuentre, se chequea que cada, al igula que el lider, contenga al menos 1 pokemon. Por otro lado, para el personaje principal, se chequea que que este tenga un nombre y que posea al menos un pokemon.
